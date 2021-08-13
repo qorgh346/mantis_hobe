@@ -1,0 +1,75 @@
+{% extends 'mentorbase.html' %}
+
+{% block content %}
+{% load static %}
+
+<style>
+.updown{
+    float: left;
+    width: 5%;
+    height: 450px;
+    border-right: 1px solid gray;
+    margin-right: 30px;
+    padding-right: 10px;
+}
+</style>
+
+
+<h1> MENTORING </h1>
+<br>
+<br>
+
+<div>
+    <div style="width:750px; height:450px;  float:left;">
+    	<h5><b>강의 소개</b></h5>
+    
+    	<p>
+			<h2> 멘티님 만나서 반갑습니다! </h2><br>
+          <p>
+              "저는 아모레퍼시픽에서 3년 근무한 ooo멘토입니다.<br>
+              멘티님의 포트폴리오 준비, 자소서 준비를 도와드리겠습니다<br>
+              또 실무자만 알 수 있는 정보들을 알려드리겠습니다.<br>
+              저의 수업을 수강해 보시겠어요? <br>
+          </p>
+    
+    	</p>
+    	</div>
+    
+    
+    <div class="updown" ></div>
+    
+    <div style="width:300px; height:450px; float:left;">
+    	<h5>ooo <b>멘토님</b></h5>
+        </br>
+    	<figure class="text-end">
+    		<h6 style="color: blueviolet; font-size: small; ">경기대 화학공학과 </br> 화장품 공학과</h6>
+    	</figure>
+    	
+        </br>
+    	<p style="font: size 1px;"><b>
+    		멘티님 만나서 반갑습니다.<br>
+    		화장품 연구원 ooo 입니다.<br>
+    		멘티스에서 멘토로 활동하며,<br>
+    		화장품 연구원을 꿈꾸는<br>
+    		멘티님께 도움이 되고싶습니다<br></b>
+    	</p>
+    	<br>
+    	<br>
+    
+    
+    	<ul class="actions special">
+    		<li><a href="{% url 'apply_check' %}" class="button">수강하기</a></li>
+    	</ul>
+    
+    </div>
+</div>
+	
+
+<br>
+<br>
+<br>
+<h6>수강하기 버튼을 누르면 결제페이지로 이동합니다!</h6>
+<br>
+
+
+{% endblock %}

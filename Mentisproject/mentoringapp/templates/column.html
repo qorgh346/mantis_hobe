@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<br>
+<article class="post featured">
+	<header class="major">
+		<h1> MENTOR COLUMN </h1>
+        <h3>{{mentor}}님의 칼럼</h3>
+		<br />
+		<img src="{% static 'images/선생님.png' %}" width="250px" height="250px"  alt="" /><br>
+		<br />
+		<p>{{user.user_name}}님 만나서 반갑습니다!<br />
+            {{mentor.one_field}}
+		</p>
+	</header>
+</article>
+<hr>
+<br>
+<br>
+<br>
+
+{% if column %}
+{% for c in column %}
+<a href="{% url 'column_detail1' c.id %}" class="list-group-item list-group-item-action">
+    <div class="d-flex w-100 justify-content-between">
+		<h3><B>{{c.title}}</B></h3>
+        <small class="text-muted">자세히 보러가기</small>
+    </div>
+    <small class="text-muted">{{c.created_at}}</small>
+</a>
+<br>
+<br>
+<hr>
+{% endfor %}
+{% else %}
+<p>작성된 칼럼이 없습니다.</p>
+{% endif %}
+
+<ul class="actions special">
+	<li><a href="{% url 'mentoring' %}" class="button">목록으로</a></li>
+</ul>
+
+{% endblock %}

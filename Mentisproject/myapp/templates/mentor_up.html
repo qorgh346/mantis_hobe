@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    😥멘토 마이페이지 업데이트 하는 곳 입니다.
+    <form action="{% url 'mentor_up' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!-- <p>
+            <strong>이름</strong>
+            <input type="text" name="name" placeholder="이름">
+        </p> -->
+        <p>
+            <strong>이메일</strong>
+            <input type="email" name="email" placeholder="이메일">
+        </p>
+        <p>
+            <strong>전화번호</strong>
+            <input type="number" name="phoneNumber" placeholder="전화번호">
+        </p>
+       
+        <p>
+            <input type="file" name="image" placeholder="본인증명서"><br>
+        </p>
+        <p>
+            <input type="submit" value="변경">
+        </p>
+    </form>
+</body>
+</html>

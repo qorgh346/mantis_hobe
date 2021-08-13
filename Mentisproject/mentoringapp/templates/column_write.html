@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+<h1 class="text-center"> MENTOR COLUMN </h1>
+
+<br />
+<form action="{% url 'column_write' %}" method="POST">
+{% csrf_token %}
+<h5>COLUMN TITLE</h5>
+<div class="field">
+    <input type="text" name="title" placeholder="칼럼 제목을 입력해주세요!">
+</div>
+
+<br />
+<br />
+
+<h5>IMAGE</h5>
+<div class="field">
+	<input type="file" src="" alt="" name="photo">
+</div>
+
+<br />
+<br />
+	
+<h5>COLUMN CONTENT</h5>
+<div class="field">
+	<textarea name="content" rows="22" placeholder="칼럼의 상세내용을 입력해주세요!"></textarea>
+</div>
+
+<br />
+<br />
+<br />
+
+<ul class="actions special">
+	<li><input type="submit" value="칼럼 등록"></li>
+</ul>
+
+<br />
+<br />
+</form>
+
+{% endblock %}

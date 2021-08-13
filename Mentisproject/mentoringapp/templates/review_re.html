@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>멘토링 페이지</title>
+</head>
+<body>
+    {{mentor.user_info_id}}멘토님의 후기 필터링 페이지 입니다.
+        <br>
+
+        ====================최신순입니당==========
+
+            {% for a in review_lastest %}
+            <div>
+                    <p>작성자: {{a.author}}</p>
+                    <p>후기내용: {{a.content}}</p>
+
+                <br><br><br>
+            </div>
+        {% endfor %}
+         <br><br><br>
+
+        ===============별점순입니당===============
+            {% for b in review_GPA %}
+            <div>
+                    <p>작성자: {{b.author}}</p>
+                    <p>후기내용: {{b.content}}</p>
+
+                <br><br><br>
+            </div>
+    {% endfor %}
+    </div>
+
+</body>
+</html>

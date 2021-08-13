@@ -1,0 +1,98 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <link rel="stylesheet" href="{% static 'assets/css/signup.css' %}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="title">회원가입</div>
+        <form action="{% url 'signup' %}" method="POST">
+            {% csrf_token %}
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">이름</span>
+                    <input type="text" name='user_name' placeholder="이름을 입력해주세요" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">아이디</span>
+                    <input type="text" name='user_id' placeholder="아이디를 입력해주세요" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">비밀번호</span>
+                    <input type="password" name='user_pw' id="password_1"  placeholder="비밀번호를 입력해주세요" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">비밀번호 확인</span>
+                    <input type="password" id="password_2" class="pw" placeholder="비밀번호를 다시 입력해주세요" required>
+                    <span id="alert-success" style="display: none;">비밀번호가 일치합니다.</span>
+                    <span id="alert-danger" style="display: none; color: #d92742; font-weight: bold; ">비밀번호가 일치하지 않습니다.</span>
+                </div>
+                <div class="input-box">
+                    <span class="details">이메일</span>
+                    <input type="email" name='user_email' placeholder="이메일을 입력해주세요" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">전화번호</span>
+                    <input type="number" name='user_phone_number' placeholder="전화번호를 입력해주세요" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">주민등록번호 앞자리</span>
+                    <input type="number" name='user_RRN1' placeholder="앞자리를 입력해주세요" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">주민등록번호 뒷자리</span>
+                    <input type="number" name='user_RRN2' placeholder="뒷자리를 입력해주세요" required>
+                </div>
+            </div>
+            <div class="gender-details">
+                <input type="radio" name="user_role" id="dot-1" value="멘티">
+                <input type="radio" name="user_role" id="dot-2" value="멘토">
+                
+                <span class="gender-title">역할</span>
+                <div class="category">
+                    <label for="dot-1">
+                        <span class="dot one"></span>
+                        <span class="gender">멘티</span>
+                    </label>
+                    <label for="dot-2">
+                        <span class="dot two"></span>
+                        <span class="gender">멘토</span>
+                    </label>
+
+                </div>
+            </div>
+            <div class="button">
+                <input type="submit" value="가입하기">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+
+
+<script>
+    $('.pw').focusout(function () {
+        var pwd1 = $("#password_1").val();
+        var pwd2 = $("#password_2").val();
+  
+        if ( pwd1 != '' && pwd2 == '' ) {
+            null;
+        } else if (pwd1 != "" || pwd2 != "") {
+            if (pwd1 == pwd2) {
+                $("#alert-success").css('display', 'inline-block');
+                $("#alert-danger").css('display', 'none');
+            } else {
+                alert("비밀번호가 일치하지 않습니다. 비밀번호를 재확인해주세요.");
+                $("#alert-success").css('display', 'none');
+                $("#alert-danger").css('display', 'inline-block');
+            }
+        }
+    });
+</script>

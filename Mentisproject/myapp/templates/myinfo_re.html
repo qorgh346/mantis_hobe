@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+    
+<!-- Form -->
+<h2>수정</h2>
+
+<form method="post" action="#">
+    <div class="row gtr-uniform">
+        
+        <div class="col-12">
+            <select name="demo-category" id="demo-category">
+                <option value="">개인정보 수정</option>
+                <option value="1">스펙 수정</option>
+            </select>
+        </div>
+
+        <div class="col-6 col-12-xsmall">
+            <h5>이름</h5>
+            <input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
+        </div>
+        <div class="col-6 col-12-xsmall">
+            <h5>비밀번호</h5>
+            <input type="password" name="demo-password" id="demo-password" value="" placeholder="password" />
+        </div>
+        <div class="col-6 col-12-xsmall">
+            <h5>이메일</h5>
+            <input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
+        </div>
+        <div class="col-6 col-12-xsmall">
+            <h5>희망 직업</h5>
+            <input type="text" name="demo-job" id="demo-job" value="" placeholder="희망 직업을 입력해주세요. ex) cs engineer" />
+        </div>
+        <div class="col-6 col-12-xsmall">
+            <h5>전화번호</h5>
+            <input type="text" name="demo-phone" id="demo-phone" value="" placeholder="000 - 1111 - 2222" />
+        </div>
+        <div class="col-6 col-12-xsmall">
+            <h5>프로필사진</h5>
+            <input type="file" name="demo-image" id="demo-image" value="" placeholder="첨부파일을 추가해주세요." />
+        </div>
+
+        
+        <!-- Break -->
+        <div class="col-12">
+            <ul class="actions" style="width: 390px; margin-left: auto; margin-right: auto;">
+                <li><a href="{% url 'mypage' %}" class="button primary">돌아가기</a></li>
+                <li><a href="{% url 'mypage' %}" class="button">수정완료</a></li>
+            </ul>
+        </div>
+    </div>
+</form>
+
+<hr />
+
+{% endblock %}

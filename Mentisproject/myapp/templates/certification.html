@@ -1,0 +1,136 @@
+  
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<style>
+    .student {
+        float: left; 
+        width: 47%; 
+        height: auto; 
+        border-right: 1px dotted gray; 
+        margin-right: 30px; 
+        padding-right: 10px;
+    }
+
+</style>
+
+
+<div class="main clearfix">
+
+    <h2 style="text-align: center;">재학생 / 직장인 인증</h2>
+
+    <p style="font-family: Arial, Helvetica, sans-serif; float: right; font-size: 20px; padding: 0;">
+        인증완료까지 최대 일주일정도 소요될 수 있습니다.
+    </p>
+
+    <br>
+
+    <hr>
+    
+    <!-- 재학생 인증 -->
+    <div class="student">
+        <h3>재학생 인증 (멘티) </h3>
+        <form method="POST" action="{% url 'certification'%}" enctype="multipart/form-data">
+        {% csrf_token %}
+            <div class="row gtr-uniform">
+                
+                <div class="col-6 col-12-xsmall">
+                    <h5>이름</h5>
+                    <input type="text" placeholder="이름" >
+                </div>
+
+                <div class="col-6 col-12-xsmall">
+                    <h5>전화번호</h5>
+                    <input type="text" name="demo-name" id="demo-name" value="" placeholder="000-1111-2222" />
+                </div>
+
+                <div class="col-6 col-12-xsmall">
+                    <h5>이메일</h5>
+                    <input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
+                </div>
+
+                <div class="col-6 col-12-xsmall">
+                    <h5>재학증명서</h5>
+                    {% if user.certification_check == False %}
+                    <input type="file" name="image" placeholder="첨부파일을 추가해주세요." />
+                    {% else %}
+                    <img src="{{certification.show_cer.url}}" alt="No Image">
+                    {% endif %}
+                </div>
+
+                <div class="col-12">
+                    <ul class="actions" style="width: 10rem; margin-left: auto; margin-right: auto;">
+                        <li><input type="submit" class="button" value = "제출하기"></li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- 직장인 인증 -->
+    <div class="student">
+        <h3>직장인 인증 (멘토) </h3>
+        <form method="POST" action="{% url 'certification' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="row gtr-uniform">
+
+                <div class="col-6 col-12-xsmall">
+                    <h5>이름</h5>
+                    <input type="text" placeholder="이름을 입력" >
+                </div>
+
+                <div class="col-6 col-12-xsmall">
+                    <h5>전화번호</h5>
+                    <input type="text" name="demo-name" id="demo-name" value="" placeholder="000-1111-2222" />
+                </div>
+
+                <div class="col-6 col-12-xsmall">
+                    <h5>이메일</h5>
+                    <input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
+                </div>
+
+                <div class="col-6 col-12-xsmall">
+                    <h5>재직증명서</h5>
+                    <input type="file" name="image"  placeholder="첨부파일을 추가해주세요." >
+                </div>
+
+                <div class="col-12">
+                    <ul class="actions" style="width: 10rem; margin-left: auto; margin-right: auto;">
+                        <li><input type="submit" class="button" value = "제출하기"></input></li>
+                    </ul>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- {% endblock %}
+여기도 맞는 부분이 거의 없네요..큰일이댜...
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    인증페이지 입니다.
+
+
+    <form action="{% url 'certification' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        제목 <br>
+        <input type="text" name="title"> <br>
+        내용 <br>
+        <input type="file" name="image"><br>
+        <input type="submit" value="Submit" />
+    </form>
+
+
+</body>
+</html> -->

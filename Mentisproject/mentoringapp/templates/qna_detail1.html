@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+<h1> {{qna_detail.title}} </h1>
+<figure class="text-end">
+	<h6> {{qna_detail.created_at}} </h6>
+</figure>
+<br>
+<br>
+
+
+<h3>content</h3>
+<blockquote>
+	{{qna_detail.content}}
+</blockquote>
+<br>
+<br>
+<br>
+<hr />
+{% if qna_comment %}
+    <h3>댓글</h3>
+    <table border='1'>
+        <tr>
+            <td>댓글 작성자</td>
+            <td>댓글 내용</td>
+            <td>작성 날짜/시간</td>
+        </tr>
+        {% for c in qna_comment %}
+        <tr>
+            <td>{{c.user_id}}</td>
+            <td>{{c.comment}}</td>
+            <td>{{c.commented_at}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+<p>댓글 작성</p>
+<form action="{% url 'qna_detail1' qna_detail.id %}" method="POST">
+    {% csrf_token %}
+    <input type="text" name="qna_comment">
+    <p></p>
+    <input type="submit" value="댓글 등록">
+</form>
+
+<ul class="actions special">
+	<li><a href="" class="button primary">수정하기</a></li>
+	<li><a href="{% url 'mentoring' %}" class="button">목록으로</a></li>
+</ul>
+<br>
+<br>
+<br>
+
+
+{% endblock %}

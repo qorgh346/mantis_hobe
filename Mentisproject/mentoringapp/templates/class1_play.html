@@ -1,0 +1,51 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'assets/css/main.css' %}"/>
+
+<style>
+    body {
+        font-family: 'Noto Sans KR', sans-serif;
+        overflow-y: hidden;        
+        background-image: url("{% static 'images/overlay.png' %}"), linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("{% static 'images/main.jpg' %}");
+    }
+    header {width: 100%; height: 80px; background-color: white; opacity: 30%;}
+    header .mantis h1 {opacity: 100%; font-family: "Lobster", cursive; text-transform: none; padding: 0.5rem 3rem; }
+
+    .video-wrap {
+        position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;
+    }
+    .video-wrap iframe,
+    .video-wrap object,
+    .video-wrap embed {position:absolute; top:0; left:0; width:60%; height:60%; margin: 3rem;}
+
+    .classlist {float: right; width: 30%; height: 400px; margin: 3rem; overflow: auto;}
+    .classList table {text-align: center; background-color: #333; color: white;}
+    .classList table th {text-align: center; padding: 0.5rem; color: white;}
+
+
+</style>
+
+<header><div class="mantis"><h1>Mantis</h1></div></header>
+<div class="video-wrap">
+    <iframe width="560" height="315" src={{lec_url}} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <section class="classList">
+        <table>
+            <thead>
+                <tr>
+                    <th>No.1</th>
+                    <th>강좌명</th>
+                    <th>play</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for lec in detail_lec %}
+                <tr>
+                    <td></td>
+                    <td>{{lec.video_title}}</td>
+                    <td><a href="{% url 'class1_play' lec.id %}" target="'_blank" onClick="window.open(this.href, '', 'width=700, height=400');">▶</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+</div>

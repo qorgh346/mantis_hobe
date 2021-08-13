@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+<article class="post featured">
+    <header class="major">
+      
+        <h2>{{mento_major}} {{mento}}님의 멘토링 입니다.<br></h2><hr>
+        {% for mentoring in mentoring_list %}
+          <h3>제목 : {{mentoring.title}}</h3>
+          <p></p>
+          {% if mentoring.image %}
+          <img src="{{mentoring.image.url}}" alt="">
+          <p></p>
+          {% endif %}
+            멘토링 DB에 info 라는 필드를 추가해서 
+            info 필드에 내용을 보여준다.
+          <p></p>
+        <div class="carousel-item">
+          <div class="carousel-caption d-none d-md-block">
+            {% if user.user_role == '멘티' %}
+              <h6 class="text-center"> {{mento_major}} {{mento}} 선배의.<br> '{{mentoring.title}}' <br> 신청하시겠습니까?</h6>
+              <a href="{% url 'mentoring_register' mentoring.id %}"><button type="button" data-bs-target="#carouselExampleCaptions"  data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">신청하기</button></a>
+            {% else %}
+            <h6 class="text-center">멘토는 멘토링 신청이 불가능합니다.</h6>
+            {% endif %}
+            <hr>
+          </div>
+        </div>
+        {% endfor %}
+    </header>
+</article>
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <a href='#mentor'><button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">멘토 소개</button></a>
+  </li>
+
+  <li class="nav-item" role="presentation">
+    <a href='#applyLecture'><button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">수업 신청</button></a>
+  </li>
+
+  <li class="nav-item" role="presentation">
+    <a href='#qna'><button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">질문 답변</button></a>
+  </li>
+
+  <li class="nav-item" role="presentation">
+    <a href='#event'><button class="nav-link " id="home-tab1" data-bs-toggle="tab" data-bs-target="#home1" type="button" role="tab" aria-controls="home1" aria-selected="false">강의event </button></a>
+  </li>
+
+  <li class="nav-item" role="presentation">
+    <a href='#review'><button class="nav-link" id="contact-tab1" data-bs-toggle="tab" data-bs-target="#contact1" type="button" role="tab" aria-controls="contact1" aria-selected="false">강의 후기</button></a>
+  </li>
+</ul>
+<hr>
+<a id="mentor"></a>
+
+<h2> 멘토님 소개 </h2><br>
+<br>
+<div class="carousel-inner">
+  <div class="carousel-item active">
+      <div class="carousel-caption d-none d-md-block">
+        <h5 class="card-title">{{mento}} 멘토님</h5><br>
+          <p class="card-text"> "꼼꼼한 자소서 첨삭, 탄탄한 포트폴리오 완성을 도와 드리겠습니다!"
+          --> 이거 넣을꺼임  {{mento.one_info}}
+          </p>
+          <p class="card-text"><small class="text-muted">
+            {% for mento_convert in mento_convert_list %}
+              {{mento_convert}}<br> 
+            {% endfor %}
+          </p>
+          <a href="{% url 'column' mento.id %}"><button class="btn btn-outline-secondary" type="button">멘토님 칼럼 보러가기</button></a>
+          <hr>
+      </div>
+  </div>
+</div>
+
+<a id='applyLecture'></a>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+          <h2> 관련 강좌 </h2><br>
+          <a href="{% url 'class_view' mento.id %}"><button class="btn btn-outline-secondary" type="button">{{mento}} 멘토님 강의 보러가기</button></a>
+        </div>
+    </div>
+
+<a id='qna'></a>
+<div class="tab-content" id="myTabContent">
+    <br>
+
+    <article class="post featured">
+      <header class="major">
+        <h2> 멘토님 소개 </h2><br>
+          <p>
+              멘티스 만의 1:1 질문 답변 서비스를 이용해 보세요! <br>
+              1:1 질문 답변을 통해 수강생분들은 언제든지 멘토님과 대화할수 있습니다 <br>
+              실시간 대화는 어려울수 있지만<br>
+              모든 질문에 멘토님들은 성심성의것 답변해주신답니다! <br>
+              그럼 질문 하러 가실까요? <br>          
+          </p>
+      </header>
+  </article>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <a href="{% url 'qna' mento.id %}"><button class="btn btn-outline-secondary" type="button">질문 보러가기</button></a>
+    </div>
+  </div>
+  <hr>
+
+  <a id="event"></a>
+  <div class="tab-pane fade" id="home1" role="tabpanel" aria-labelledby="home-tab1">
+    <article class="post featured">
+      <header class="major">
+          <h2> 멘티스에서만 진행하는 EVENT! </h2><br>
+          <p>
+              멘티스에서 제공하는 event를 놓치지 마세요<br>
+              멘토님의 오프라인 강연회등 다양한 event가 여러분을 기다리고 있습니다<br>
+              event에 대해 더 알고 싶으면 아래 버튼을 눌러주세요!
+    </article>
+    <br>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <a href="{% url 'event' %}"><button class="btn btn-outline-secondary" type="button">event 보러가기</button></a>
+    </div>
+  </div>
+  <hr>
+
+  <a id="review"></a>
+  <div class="tab-pane fade" id="home1" role="tabpanel" aria-labelledby="home-tab1">
+    <article class="post featured">
+      <header class="major">
+          <h2> 수강생 후기 </h2>
+    </article>
+    <br>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <button class="btn btn-outline-secondary" type="button">후기 보러가기</button>
+    </div>
+  </div>
+  <hr>
+</div>
+
+{% endblock %}

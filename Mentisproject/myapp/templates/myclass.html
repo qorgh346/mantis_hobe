@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<style>
+    
+    .main {
+        font-family: 'Nono Sans KR', sans-serif;
+    }
+
+    .userimage {
+        width: 200px; 
+        height: 150px; 
+        padding:0; 
+        float: left; 
+        margin-right: 10px;
+    }
+     
+    .usercontent {
+        width: 200px; 
+        padding:0; 
+        height: 150px; 
+        float: left;
+    }
+
+    .clearfix::before .clearfix::after {
+        clear: both;
+        content: '';
+        display: block;
+    }
+
+    .learning .learnlist {
+        float: left; padding: 1rem 1rem 0 1rem; border: 1px solid lightslategrey; border-radius: 10px;
+    }
+
+    .learnimage {
+        display:block; margin-left: auto; margin-right: auto;
+    }
+
+    .favorites {
+        float: left; 
+        width: 47%; 
+        height: 450px; 
+        border-right: 1px dotted gray; 
+        margin-right: 30px; 
+        padding-right: 10px;
+    }
+</style>
+
+{% if user.user_role == "멘토" %}
+<div class="favorites">
+    
+    <a href="{% url 'class_view' mento.id %}"><h3>{{mento}} 님의 강의리스트로 가기 </h3></a>
+
+</div>
+
+{% else %}
+<!-- 즐겨찾기 강의 -->
+<div class="favorites">
+    <h3>즐겨찾기</h3>
+    <div >
+        {% for i in FavorLec %}
+            <br>
+            <a href="{%url 'urlnameLectureDetail' i.id %}">{{i.lecture_title}}</a>
+        {% endfor %}
+        {% if 0 == fav_count %}
+        <p style="text-align: center;">아직 즐겨찾기 한 강의가 없습니다! <br>
+            <a href="{% url 'mentoring' %}">멘토링 페이지</a>에서 마음에 드는 강의를 둘러보세요!</p>
+        {% endif %}
+    </div>
+</div>
+
+
+<!-- 수강 중인 강의 -->
+<h3>수강 중인 강의</h3>
+<div class="learning" style="float: left; width: 47%;">
+    <div class="learnlist">
+        <!-- 이 부분이 저희 작성 부분 -->
+        {{user.user_name}}님이 듣고 계신 강의는 총 {{views_count}} 개 입니다.
+        {% for i in myLec %}
+            <a href="{%url 'urlnameLectureDetail' i.id %}"><img src="{% static 'images/포토샵.jpeg' %}" class="learnimage" width="120px" alt="" ></a>
+            <br>
+            <h4 style="text-align: center;">{{myLec.lecture_title}}</h4>
+            <h6 style="text-align: center;">{{myLec.mentor_id}}</h6>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+
+<br><br><br><br><br><br><br><br>
+
+</div> 
+
+{% endblock %}
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    My 강의 페이지 입니다!!    
+    <p>이름 : {{user.user_name}}</p>
+    <p>아이디 : {{user.user_id}}</p>
+    <p>자신이 수강중인 강의 내역</p>
+    {{user.user_name}}님이 듣고 계신 강의는 총 {{views_count}} 개 입니다.
+    {% for i in myLec %}
+            <br>
+            <a href="{%url 'urlnameLectureDetail' i.id %}">{{i.lecture_title}}</a>
+    {% endfor %}
+
+</body>
+</html> -->

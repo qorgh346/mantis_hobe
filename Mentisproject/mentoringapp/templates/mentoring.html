@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+<style>
+  hr {margin: 0;}
+  footer {text-align: center;}
+  .lecture {font-family: 'Noto Sans KR', sans-serif; letter-spacing: -0.8px;}
+
+  .lecture > h1 {font-family: 'Noto Sans KR', sans-serif; font-size: 3rem; margin: 1rem 3rem;}
+  .lecture > p {margin: 1rem 3rem 2rem 3rem;}
+
+  .clearfix:before, .clearfix:after {
+      content:'';
+      display: block;
+      clear: both;
+  }
+
+  .lectureWrap {
+      margin: 5rem 0;
+  }
+
+  /* 멘토리스트 */
+  .mantoList {
+      width: 23.3333%;
+      height: 300px;
+      float: left;
+      margin: 5%;
+      border: 3px solid transparent;
+      transition: all 0.4s cubic-bezier(.5, .24, 0, 1);
+      position: relative;
+  }
+  .mantoList::before {
+      position: absolute;
+      content: '';
+      left: 0px;
+      bottom: 0px;
+      width: 0%;
+      height: 3px;
+      background: #b5d867;
+      box-shadow: inset 0px 0px 0px 0px #b5d867;
+      display: block;
+      transition: all 0.4s cubic-bezier(.5, .24, 0, 1);
+  }
+  .mantoList:hover::before { width: 100%;}
+  .mantoList::after {
+      position: absolute;
+      content: '';
+      right: 0px;
+      top: 0px;
+      width: 0%;
+      height: 3px;
+      background: #b5d867;
+      box-shadow: inset 0px 0px 0px 0px #b5d867;
+      display: block;
+      transition: all 0.4s cubic-bezier(.5, .24, 0, 1);
+  }
+  .mantoList:hover::after { width: 100%;}
+  .mantoList:hover { 
+      border-left: 3px solid #b5d867;
+      border-right: 3px solid #b5d867;
+  }
+
+  /* 멘토리스트 텍스트 */
+  .mantoList .text {padding: 1rem;}
+  .mantoList .text .mantoName { display: block; line-height: normal; font-size: 0.8rem;} 
+  .mantoList .text .mantoName span {font-size: 1.2rem; line-height: normal}
+  .mantoList .text .mantoInfo {color: #3C3FB2; font-size: 0.8rem; line-height: normal; margin: 20px 0;}
+  .mantoList .text .lecturetitle {font-size: 1.8rem; font-weight: 900; line-height: normal; word-break: keep-all; margin: 20px 0;}
+  .mantoList .text .lectureIntro {font-size: 0.8rem; line-height: normal; word-break: keep-all; overflow: hidden; text-overflow: ellipsis;}
+</style>
+
+
+<!--body-->
+<article class="post featured">
+    <header class="major">
+        <h2><a href="#move">검증된 실무 멘토가 진행하는<br/>
+         멘토링 수업에 참여하세요!</a></h2>
+        <p>
+            취업에 성공한 선배들을 통해 취업과 진로 고민을 해결하세요. <br>
+            나만의 포트폴리오 준비, 자소서 준비, 다양한 취업정보들 멘토링을 통해 배워보세요!<br>
+            함께 취업을 만들어가 볼까요?
+        </p>
+    </header>
+</article>
+<br>
+<br>
+<div class="lecture">
+  <hr>
+  <div>
+    <h5 class="text-center" > <a id="move">나의 직무와 맞는 멘토 찾아보기</a></h5>
+    <br>		
+    	<ul class="actions small hobe" >
+            <form action="">
+                {% csrf_token %}
+
+            <button type="submit" name="temp" value="IT/SW" class="button small" formmethod="POST">IT/SW</button>
+            <button style="display: inline;" type="submit" name="temp" value="PM" class="button primary small" formmethod="POST">PM</button>
+            <button type="submit" name="temp" value="건설/기계/기술" class="button small" formmethod="POST">건설/기계/기술</button>
+            <button type="submit" name="temp" value="유통/물류/무역" class="button primary small" formmethod="POST">유통/물류/무역</button>
+
+            <button type="submit" name="temp" value="광고/홍보" class="button  small" formmethod="POST">광고/홍보</button>
+            <button type="submit" name="temp" value="금융/은행/보험" class="button primary small" formmethod="POST">금융/은행/보험</button>
+            <button type="submit" name="temp" value="디자인" class="button  small" formmethod="POST">디자인</button>
+            <button type="submit" name="temp" value="미디어" class="button primary small" formmethod="POST">미디어</button>
+            <button type="submit" name="temp" value="연구개발" class="button  small" formmethod="POST">연구개발</button>
+
+            <button type="submit" name="temp" value="인사총무" class="button  small" formmethod="POST">인사총무</button>
+            <button type="submit" name="temp" value="품질" class="button primary small" formmethod="POST">품질</button>
+            <button type="submit" name="temp" value="의료" class="button  small" formmethod="POST">의료</button></li>
+            <button type="submit" name="temp" value="영업/고객상담" class="button primary small" formmethod="POST">영업/고객상담</button>
+            <button type="submit" name="temp" value="생산제조" class="button  small" formmethod="POST">생산제조</button>
+            
+            <button type="submit" name="temp" value="마케팅/기획" class="button  small" formmethod="POST">마케팅/기획</button>
+            <button type="submit" name="temp" value="경영/사무/행정" class="button primary small" formmethod="POST">경영/사무/행정</button>
+            <button type="submit" name="temp" value="MD/상품기획" class="button  small" formmethod="POST">MD/상품기획</button>
+            <button type="submit" name="temp" value="SCM" class="button primary small" formmethod="POST">SCM</button>
+            <button type="submit" name="temp" value="기타" class="button  small" formmethod="POST">기타</button>    
+        </ul>
+  </div>
+  <div class="clearfix lectureWrap">
+      {% for obj in objects %}  
+             <div class="mantoList">
+              <a href="{% url 'mento_detail' obj.id %}">
+              <div class="text">
+                  <div class="mantoName">멘토 <span>{{obj.name}}</span></div>
+                  <div class="mantoInfo">
+                      {% for content in obj.contents %}
+                      {{content}}<br>
+                      {% endfor %}
+                  </div>
+                  <hr>
+                      <hr>
+                  <div class="lectureIntro">{{obj.field}}<br></div>
+              </div>
+              </a>
+            </div>
+      {% endfor %}
+</div>
+<footer>
+  <div class="pagination">
+      <a href="#" class="page active">1</a>
+      <a href="#" class="page">2</a>
+      <a href="#" class="page">3</a>
+      <span class="extra">&hellip;</span>
+      <a href="#" class="page">8</a>
+      <a href="#" class="page">9</a>
+      <a href="#" class="page">10</a>
+      <a href="#" class="next">Next</a>
+  </div>
+</footer>
+
+{% endblock %}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>멘토링 페이지</title>
+</head>
+<body>
+    {{mentor.user_info_id}}멘토님의 멘토링 페이지 입니다.
+
+    <div>
+            <p>멘토님 아이디: {{mentor.user_info_id}}</p>
+            <p>멘토 이력: {{mentor.contents}}</p>
+        
+        <br><br><br>
+    </div>
+
+    <div>
+    강의목차:
+        {% for m in Lec %}
+    <div>
+            <a href="{% url 'mento_detail' m.id%}">
+            <p>강의이름: {{m.lecture_title}}</p>
+            </a>
+            <p>강의설명: {{m.description}}</p>
+
+        <br><br><br>
+    </div>
+    {% endfor %}
+    </div>
+
+    <div>
+    후기보기: 
+  
+        <br>
+            <a href="{% url 'review_up' %}"> 후기 쓰기 </a> <br>
+            <a href="{% url 'review_filter' mentor.id %}"> 후기 필터 사용하기 </a>
+
+                    {% for a in review %}
+        <div>
+                <p>작성자: {{a.author}}</p>
+                <p>후기내용: {{a.content}}</p>
+
+            <br><br><br>
+        </div>
+        {% endfor %}
+
+            <button type="submit"> 강의신청하기 </button>
+         <br><br><br>
+        ==============================
+        {% for a in mentor_review %}
+        <div>
+                <p>작성자: {{a.author}}</p>
+                <p>후기내용: {{a.content}}</p>
+
+            <br><br><br>
+        </div>
+        {% endfor %}
+         <br><br><br>
+        ==============================
+
+            {% for a in review_lastest %}
+        <div>
+                <p>작성자: {{a.author}}</p>
+                <p>후기내용: {{a.content}}</p>
+
+            <br><br><br>
+        </div>
+        {% endfor %}
+         <br><br><br>
+        ==============================
+            {% for b in review_GPA %}
+        <div>
+                <p>작성자: {{b.author}}</p>
+                <p>후기내용: {{b.content}}</p>
+
+            <br><br><br>
+        </div>
+    {% endfor %}
+    </div>
+
+
+    <button type="submit"> 1대1 멘토 신청하기 </button
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>결제_강의페이지</title>
+</head>
+<body>
+    해당강의 페이지(결제포함)
+    <br>
+    
+    <div>
+            
+            <p>!!!!!!!!!!!!강좌 이름:{{lec.lecture_title}}!!!!!!!!!!!</p><br> 
+            ------------------강의목차--------------------
+            {% for a in detail_lec %}
+            <p>강의 이름:{{a.video_title}}</p><br> 
+            -------------------
+            {% endfor %}
+            강의목차 끝---------
+
+            <p>멘토:{{lec.mentor_id}}</p><br>
+            <p>강의설명:{{lec.description}}</p><br>
+            <p>가격:{{lec.price}}</p><br>
+            <p>분야:{{lec.field}}</p><br>
+
+            <a href="{% url 'buy_process' lec.id %}" class="button primary">구매</a>
+            
+        
+        <br><br><br>
+    </div>
+
+  
+</body>
+</html>

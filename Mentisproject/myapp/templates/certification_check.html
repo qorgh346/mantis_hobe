@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% load static %}
+
+
+
+<article class="post featured">
+						<!-- Posts -->
+							<section class="posts">
+								<article>
+								        <p style="font-size: 60px; text-align: center; font-family: 'Noto Sans KR', sans-serif;">인증 대기 중입니다!</p>
+                                            <br>
+                                        <a href=""{% url 'index' %}"><img src="{{ profile.user_certification.url }}" alt="" width="100%"></a>
+                                                                                <!-- 인증파일 여기다 넣는게 맞겠죠..? -->
+                                </article>                                     
+							</section>
+
+						<!-- Footer -->
+							<footer>
+								<div class="pagination">
+
+								</div>
+							</footer>
+
+					</div>
+
+{% endblock %}
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    내 인증서 보기 페이지?
+    <img src="{{ profile.user_certification.url }}">
+</body>
+</html> -->

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<br>
+<h2 class="text-center"> 1:1 질문답변</h2>
+<br />
+<h5 class="text-center"> <b>여기에 질문을 남겨주시면 24시간 내에 답변드리겠습니다!</b></h5>
+<br />
+<hr>
+<br>
+
+<form action="{% url 'qna_write' %}" method="POST">
+{% csrf_token %}
+<h5><b>제목</b></h5>
+<div class="field">
+	<input type="text" name="title" placeholder="질문 제목을 입력해주세요!">
+</div>
+
+<br />
+<br />
+
+<h5>IMAGE</h5>
+<div class="field">
+	<input type="file" src="" alt="" name="photo">
+</div>
+
+<br />
+<br />
+
+<h5><b>질문 내용</b></h5>
+<div class="field">
+	<textarea name="content" rows="10" placeholder="질문 내용을 입력해주세요!"></textarea>
+</div>
+<br>
+<br>
+<br>
+
+<ul class="actions special">
+	<li><input type="submit" value="질문 등록"></li>
+</ul>
+
+<br />
+<br />
+</form>
+{% endblock %}

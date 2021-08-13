@@ -1,0 +1,242 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+{% block content %}
+<style>
+    
+    .main {
+        font-family: 'Nono Sans KR', sans-serif;
+    }
+
+    .userimage {
+        width: 200px; 
+        height: 150px; 
+        padding:0; 
+        float: left; 
+        margin-right: 10px;
+    }
+     
+    .usercontent {
+        width: 200px; 
+        padding:0; 
+        height: 150px; 
+        float: left;
+    }
+
+    .clearfix::after {
+        clear: both;
+        content: '';
+        display: block;
+    }
+
+    .abox {
+        border: 1px solid lightslategrey; 
+        padding: 10px; 
+        height: auto; 
+        min-height: 100px; 
+        overflow: auto;
+    }
+</style>
+
+
+<div class="main">
+
+    <header>
+        <h2 style="float: left;">MY PAGE <span>&nbsp;&nbsp;</span></h2>
+        <a href="{% url 'myinfo_up' %}" style="font-size: 20px;">정보 등록</a> <span>&nbsp;&nbsp;</span> 
+        <a href="{% url 'myinfo_re' %}" style="font-size: 20px;">수정하기</a> <span>&nbsp;&nbsp;</span>
+    </header>
+
+    <hr/>
+
+    <div class="userimage">
+        <img src="{% static 'images/user.png' %}" width="150px" alt="">
+        <h2 style="position: relative; left: 30px;">{{user.user_name}}</h2> <br>
+    </div>
+
+    {% if user.user_role == "멘티" %}
+    <div class="usercontent"> 
+        <h3>CS ENGINEER</h3>  <!--'CS ENGINEER'라고 적힌 부분엔 USER의 희망 직종-->
+        <hr/>
+        <h6>대학교</h6>
+        <h6>학과</h6> 
+        <h6>학점</h6>
+        <h6>TOEIC</h6> 
+        <h6>보유 POINT</h6> 
+    </div>
+    <div class="usercontent" style="margin-right: 50px;"> 
+        <h3> &nbsp; </h3>
+        <hr/>
+        <h6>경기대학교</h6>  <!-- 각 유저의 대학교 -->
+        <h6>멋사학과</h6>   <!--  각 유저의 학과 -->
+        <h6>4.3/4.5</h6>    <!-- 각 유저의 학점 -->
+        <h6>900/990</h6>   <!-- 각 유저의 토익 점수 -->
+        <h6>{{user.user_cash}} P</h6>      <!-- 각 유저의 포인트 -->
+    </div>
+
+    <div class="userside">
+        <h4 style="width: 300px; height: 300px; border: 1px solid lightgrey; float: left; margin-right: 30px; text-align: center;">
+            <a href="{% url 'myclass' %}"><br>수강 중인 강의<hr style="height: 0px; width: 100%; border-bottom: 0px dotted gray; border-top: 1px dotted gray;"/>
+            {{menti_count}} <!--유저가 선택한 강의 수만큼 숫자가 들어갈 수 있게-->
+            </a>
+        </h4>
+    </div>
+
+    <div class="userside">
+        <h4 style="width: 300px; height: 300px; border: 1px solid lightgrey; float: left; text-align: center;">
+            <a href="{% url 'certification' %}"><br>대학교 인증 여부<hr style="height: 0px; width: 100%; border-bottom: 0px dotted gray; border-top: 1px dotted gray;"/>
+            {{check}} <!-- 인증 여부에 따라 '인증 완료/ 인증 대기/ 인증 전'으로 구분 -->
+        </a>
+        </h4>
+    </div>
+    {% else %}
+    <div class="usercontent"> 
+        <h3>CS ENGINEER</h3>  <!--'CS ENGINEER'라고 적힌 부분엔 USER의 희망 직종-->
+        <hr/>
+        <h6>회사</h6>
+        <h6>업무직종</h6> 
+        <h6>자격증</h6>
+        <h6>TOEIC</h6> 
+        <h6>보유 POINT</h6> 
+    </div>
+    <div class="usercontent" style="margin-right: 50px;"> 
+        <h3> &nbsp; </h3>
+        <hr/>
+        <h6>삼성전자</h6>  <!-- 각 유저의 대학교 -->
+        <h6>마케팅</h6>   <!--  각 유저의 학과 -->
+        <h6>컴활 1급,,,</h6>    <!-- 각 유저의 학점 -->
+        <h6>900/990</h6>   <!-- 각 유저의 토익 점수 -->
+        <h6>{{user.user_cash}} P</h6>      <!-- 각 유저의 포인트 -->
+    </div>
+    <div class="userside">
+        <h4 style="width: 300px; height: 300px; border: 1px solid lightgrey; float: left; margin-right: 30px; text-align: center;">
+            <a href="{% url 'myclass' %}"><br>진행 중인 강의<hr style="height: 0px; width: 100%; border-bottom: 0px dotted gray; border-top: 1px dotted gray;"/>
+            {{mentor_count}} <!--유저가 선택한 강의 수만큼 숫자가 들어갈 수 있게-->
+            </a>
+        </h4>
+    </div>
+    <div class="userside">
+        <h4 style="width: 300px; height: 300px; border: 1px solid lightgrey; float: left; text-align: center;">
+            <a href="{% url 'certification' %}"><br>대학교 인증 여부<hr style="height: 0px; width: 100%; border-bottom: 0px dotted gray; border-top: 1px dotted gray;"/>
+            {{check}} <!-- 인증 여부에 따라 '인증 완료/ 인증 대기/ 인증 전'으로 구분 -->
+        </a>
+        </h4>
+    </div>
+    
+    {% endif %}
+
+    
+    
+    <br><br><br><br><br><br><br><hr/>
+    
+    <!--마이페이지 속 nav-->
+    <div class="usernav">
+        <ul class="actions" style="margin: 1rem 0 1rem 0;">
+            <li><a href="{% url 'mypage' %}"class="button">스펙</a></li>
+            <li><a href="{% url 'myclass' %}" class="button">강의</a></li>
+            {% if user.user_role == "멘티" %}
+            <li><a href="{% url 'cash' %}" class="button primary">포인트 & 결제</a></li>
+            {% else %}
+            <li></li><a href="{% url 'class_upload' %}" class="button primary">수강업로드</a></li>
+            <li><a href="{% url 'column_write' %}" class="button primary">칼럼 작성하기</a></li>
+            <li><a href="{% url 'event_up' %}" class="button primary">이벤트 작성하기</a></li>
+            <li></li>
+            {% endif %}
+        </ul>
+    </div>
+    
+    <hr style="margin: 0 0 1rem 0;">
+
+    <!--스펙 부분-->
+    <h3>학력</h3>
+    <div class="table-wrapper">
+        <table class="alt">
+            <tbody>
+                <tr>
+                    <td><h6 style="margin-bottom: 0;">2019.03 ~ 2023.02 <br> <br>
+                        <p style="margin-bottom: 0; font-size: 15px; color: blue;">졸업예정</p></h6></td>
+                    <td> <h5 style="margin-bottom: 0;">경기대학교 (수원)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+                        <h6 style="margin: 1rem 0 0 0 ;">00학과</h6></td>
+                </tr>
+            </tbody>          
+        </table>
+    </div>
+
+    <h3>인턴 & 대외활동</h3>
+    <div class="table-wrapper">
+        <table class="alt">
+            <tbody>
+                <tr>
+                    <td><h6 style="margin-bottom: 0;">2021.03 ~ 2021.06 <br> <br>
+                        <p style="margin-bottom: 0; font-size: 15px; color: blue;">4개월</p></h6></td>
+                    <td> <h5 style="margin-bottom: 0;">00전자</h5>
+                        <h6 style="margin: 1rem 0 0 0;">반도체 공정의 실제 업무를 체험할 수 있었다.</h6></td>
+                </tr>
+            </tbody>          
+        </table>
+    </div>
+
+    <h3>자격증</h3>
+    <div class="table-wrapper">
+        <table class="alt">
+            <tbody>
+                <tr>
+                    <td><h6 style="margin-bottom: 0;">2021.03</h6></td>
+                    <td><h5 style="margin-bottom: 0;">전기기사&nbsp;&nbsp;&nbsp;
+                        <span style="font-size: 15px;">한국산업인력공단</span></h5></td>
+                </tr>
+                <tr>
+                    <td><h6 style="margin-bottom: 0;">2021.05</h6></td>
+                    <td><h5 style="margin-bottom: 0;">2종보통운전면허&nbsp;&nbsp;&nbsp;
+                        <span style="font-size: 15px;">경찰청(운전면허시험관리단)</span></h5></td>
+                </tr>
+            </tbody>          
+        </table>
+    </div>
+
+    <h3>수상</h3>
+    <div class="table-wrapper">
+        <table class="alt">
+            <tbody>
+                <tr>
+                    <td><h6 style="margin-bottom: 0;">2021년</td>
+                    <td><h5 style="margin: 0;">수상명&nbsp;&nbsp;&nbsp;
+                        <span style="font-size: 15px;">00협회</span></h5>
+                        <h6 style="margin: 1rem 0 0 0 ;">수상 내용</h6>
+                    </td>
+                </tr>
+            </tbody>          
+        </table>
+    </div>
+
+    <h3>어학</h3>
+    <div class="table-wrapper">
+        <table class="alt">
+            <tbody>
+                <tr>
+                    <td><h5 style="margin-bottom: 0;">영어</h5></td>
+                    <td><h5 style="margin-bottom: 0;">TOEIC 900점&nbsp;&nbsp;&nbsp;
+                        <span style="font-size: 15px;">(취득일 : 2021.03)</span></h5></td>
+                </tr>
+                <tr>
+                    <td><h5 style="margin-bottom: 0;">중국어</h5></td>
+                    <td><h5 style="margin-bottom: 0;">HSK 3급&nbsp;&nbsp;&nbsp;
+                        <span style="font-size: 15px;">(취득일 : 2021.08)</span></h5></td>
+                </tr>
+            </tbody>          
+        </table>
+    </div>
+    {% if user.user_role == "멘티" %}
+    <h3>자기소개서</h3>
+    <div class="abox">
+        <div><h4 style="padding: 1rem 0 0 1rem;">지원동기</h4></div>
+        <div>
+            <p style="font-size: 15px; padding: 0 1rem 0 1rem;">저는 학창시절부터 로봇에 관심이 많아 00학과에 진학하게 되었습니다. 
+                그렇게 학문을 공부하던 중 반도체 분야에 관심이 생겼고 00 회사에 지원하게 되었습니다.</p>
+        </div>
+    </div>
+    {% endif %}
+</div> 
+
+{% endblock %}

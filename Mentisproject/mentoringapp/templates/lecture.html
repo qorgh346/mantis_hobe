@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+
+    hr {margin: 0;}
+    footer {text-align: center;}
+    .lecture {font-family: 'Noto Sans KR', sans-serif; letter-spacing: -0.8px;}
+
+    .lecture > h1 {font-family: 'Noto Sans KR', sans-serif; font-size: 3rem; margin: 1rem 3rem;}
+    .lecture > p {margin: 1rem 3rem 2rem 3rem;}
+
+    .clearfix:before, .clearfix:after {
+        content:'';
+        display: block;
+        clear: both;
+    }
+
+    .lectureWrap {
+        margin: 5rem 0;
+    }
+
+    /* 멘토리스트 */
+    .mantoList {
+        width: 23.3333%;
+        height: 300px;
+        float: left;
+        margin: 5%;
+        border: 3px solid transparent;
+        transition: all 0.4s cubic-bezier(.5, .24, 0, 1);
+        position: relative;
+    }
+    .mantoList::before {
+        position: absolute;
+        content: '';
+        left: 0px;
+        bottom: 0px;
+        width: 0%;
+        height: 3px;
+        background: #b5d867;
+        box-shadow: inset 0px 0px 0px 0px #b5d867;
+        display: block;
+        transition: all 0.4s cubic-bezier(.5, .24, 0, 1);
+    }
+    .mantoList:hover::before { width: 100%;}
+    .mantoList::after {
+        position: absolute;
+        content: '';
+        right: 0px;
+        top: 0px;
+        width: 0%;
+        height: 3px;
+        background: #b5d867;
+        box-shadow: inset 0px 0px 0px 0px #b5d867;
+        display: block;
+        transition: all 0.4s cubic-bezier(.5, .24, 0, 1);
+    }
+    .mantoList:hover::after { width: 100%;}
+    .mantoList:hover { 
+        border-left: 3px solid #b5d867;
+        border-right: 3px solid #b5d867;
+    }
+
+    /* 멘토리스트 텍스트 */
+    .mantoList .text {padding: 1rem;}
+    .mantoList .text .mantoName { display: block; line-height: normal; font-size: 0.8rem;} 
+    .mantoList .text .mantoName span {font-size: 1.2rem; line-height: normal}
+    .mantoList .text .mantoInfo {color: #3C3FB2; font-size: 0.8rem; line-height: normal; margin: 20px 0;}
+    .mantoList .text .lecturetitle {font-size: 1.8rem; font-weight: 900; line-height: normal; word-break: keep-all; margin: 20px 0;}
+    .mantoList .text .lectureIntro {font-size: 0.8rem; line-height: normal; word-break: keep-all; overflow: hidden; text-overflow: ellipsis;}
+
+</style>
+
+<div class="lecture">
+    <h1>멘토리스트</h1>
+    <p>&nbsp;&nbsp;원하는 커리큘럼의 멘토를 찾아보세요!</p>
+    <br>
+    <hr>
+    <div class="clearfix lectureWrap">
+        <div class="mantoList">
+            <div class="text">
+                <div class="mantoName">멘토<span>김00</span></div>
+                <div class="mantoInfo">홍익대학교<br>프리랜서 디자이너</div>
+                <hr>
+                <div class="lecturetitle"><a href="{% url 'class1' %}">포토샵 완전정복!</a></div>
+                <hr>
+                <div class="lectureIntro"><br>단기간 포토샵 집중공략 & 포트폴리오 하나 만들자!</div>
+            </div>
+        </div>
+        <div class="mantoList">
+            <div class="text">
+                <div class="mantoName">멘토<span>김00</span></div>
+                <div class="mantoInfo">홍익대학교<br>프리랜서 디자이너</div>
+                <hr>
+                <div class="lecturetitle"><a href="{% url 'class1' %}">포토샵 완전정복!</a></div>
+                <hr>
+                <div class="lectureIntro"><br>단기간 포토샵 집중공략 & 포트폴리오 하나 만들자!</div>
+            </div>
+        </div>
+        <div class="mantoList">
+            <div class="text">
+                <div class="mantoName">멘토<span>김00</span></div>
+                <div class="mantoInfo">홍익대학교<br>프리랜서 디자이너</div>
+                <hr>
+                <div class="lecturetitle"><a href="{% url 'class1' %}">포토샵 완전정복!</a></div>
+                <hr>
+                <div class="lectureIntro"><br>단기간 포토샵 집중공략 & 포트폴리오 하나 만들자!</div>
+            </div>
+        </div>
+        <div class="mantoList">
+            <div class="text">
+                <div class="mantoName">멘토<span>김00</span></div>
+                <div class="mantoInfo">홍익대학교<br>프리랜서 디자이너</div>
+                <hr>
+                <div class="lecturetitle"><a href="{% url 'class1' %}">포토샵 완전정복!</a></div>
+                <hr>
+                <div class="lectureIntro"><br>단기간 포토샵 집중공략 & 포트폴리오 하나 만들자!</div>
+            </div>
+        </div>
+        <h3>백엔드</h3>
+        <div class="mantoList">
+            <div class="text">
+                <div class="mantoName">멘토<span>김00</span></div>
+                <div class="mantoInfo">홍익대학교<br>프리랜서 디자이너</div>
+                <hr>
+                <div class="lecturetitle"><a href="{% url 'class1' %}">포토샵 완전정복!</a></div>
+                <hr>
+                <div class="lectureIntro"><br>단기간 포토샵 집중공략 & 포트폴리오 하나 만들자!</div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="pagination">
+            <a href="#" class="page active">1</a>
+            <a href="#" class="page">2</a>
+            <a href="#" class="page">3</a>
+            <span class="extra">&hellip;</span>
+            <a href="#" class="page">8</a>
+            <a href="#" class="page">9</a>
+            <a href="#" class="page">10</a>
+            <a href="#" class="next">Next</a>
+        </div>
+    </footer>
+
+</div>
+    
+    
+
+{% endblock %}

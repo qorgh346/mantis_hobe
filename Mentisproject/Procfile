@@ -1,0 +1,1 @@
+web: gunicorn Mentisproject.wsgi --log-file -

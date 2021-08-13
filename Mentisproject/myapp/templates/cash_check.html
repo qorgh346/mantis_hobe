@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% load static %}
+
+
+
+<article class="post featured">
+   <!-- Posts -->
+      <section class="posts">
+         <article>
+            <p style="font-size: 60px; text-align: center; font-family: 'Noto Sans KR', sans-serif;">결제 페이지 입니다.</p>
+               <br>
+               <form action="{% url 'cash_check' %}" method="POST">
+                  {% csrf_token %}
+                  <label for="cash">{{user.user_name}}님 얼마 충전할까요? </label>
+                  <input type="number" id="cash" name="cash" 
+                        minlength="4" maxlength="8" size="10" >
+                  <input type="submit" value="충전하기">
+               </form>
+         </article>
+      </section>
+
+   <!-- Footer -->
+      <footer>
+         <div class="pagination">
+
+         </div>
+      </footer>
+
+{% endblock %} 

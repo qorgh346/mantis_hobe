@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>멘토찾기</title>
+</head>
+<body>
+    후기쓰기 페이지입니다.<br><br><br>
+    <form action="{%url 'review_up' %}" method="POST">
+        {% csrf_token %}
+        멘토 이름 : <input type="text" name='review_object' placeholder="이름을 입력해주세요" required> <br>
+        멘티 이름 (작성자) : <input type="text" name='author' placeholder="이름을 입력해주세요" required> <br>
+        작성 내용 : <input type="text" name='content' placeholder="내용을 입력해주세요" > <br>
+        별점 : <input type="number" name='review_point'  placeholder="0~5의 정수만 입력해주세요" > <br>
+
+        <button type="submit"> 제출 </button>
+    </form>
+</html>

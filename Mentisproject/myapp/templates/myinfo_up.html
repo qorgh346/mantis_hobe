@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+    
+<!-- Form -->
+<h2>정보 등록</h2>
+
+<form action="{% url 'myinfo_up' %}" method="POST" enctype="multipart/form-data" >
+    {% csrf_token %}
+    <div class="row gtr-uniform">
+        
+        <div class="col-12">
+            <select name="demo-category" id="demo-category">
+                <option value="">스펙</option>
+            </select>
+        </div>
+
+        <!-- Break -->
+        <div class="col-6 col-12-xsmall">
+            <h5>학력</h5>
+            <input type="text" name="user_school" placeholder="Name" />
+        </div>
+        <div class="col-6 col-12-xsmall">
+            <h5>인턴 & 대외활동</h5>
+            <input type="text" name="activity" placeholder="인턴 & 대외활동" />
+        </div>
+        <div class="col-6 col-12-xsmall">
+            <h5>자격증</h5>
+            <input type="text" name="certificate" placeholder="자격증" />
+        </div>
+        <div class="col-6 col-12-xsmall">
+            <h5>수상</h5>
+            <input type="text" name="prize" placeholder="수상 경력을 입력해주세요." />
+        </div>
+        <div class="col-6 col-12-xsmall">
+            <h5>어학</h5>
+            <input type="text" name="language" />
+        </div>
+        {% if user.user_role == "멘티" %}
+        <div class="col-6 col-12-xsmall">
+            <h5>자기소개서</h5>
+            <input type="file" name="self_introduction_file" placeholder="첨부파일을 추가해주세요." />
+        </div>
+        {% endif %}
+        
+        {% if user.user_role == "멘토" %}
+        <div class="col-6 col-12-xsmall">
+            <h5>멘토 이력서</h5>
+            <input type="text" name="mento_info" placeholder=" ( , ) 로 구분하여 작성"/>
+        </div>
+        <div class="col-6 col-12-xsmall">
+            <h5>멘토 다짐</h5>
+            <input type="text" name="mento_content" placeholder="다짐을 적어주세요"/>
+        </div>
+        {% endif %}
+        
+        <!-- Break -->
+        <div class="col-12">
+            <ul class="actions" style="width: 390px; margin-left: auto; margin-right: auto;">
+                <li><a href="{% url 'mypage' %}" class="button primary">돌아가기</a></li>
+                <li><input type="submit" class="button" value = "등록완료"></input></li>
+            </ul>
+        </div>
+    </div>
+</form>
+
+<hr />
+
+{% endblock %}

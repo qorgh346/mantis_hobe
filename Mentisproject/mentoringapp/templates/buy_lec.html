@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>결제_전체강의페이지</title>
+</head>
+<body>
+    전체강의 페이지(결제포함)
+    <br>
+    {% for a in all_lecture %}
+    <div>
+            <a href="{% url 'buy_detail' a.id %}">
+            <p>강의이름:{{a.lecture_title}}</p><br> </a>
+            <p>멘토:{{a.mentor_id}}</p><br>
+            <p>강의설명:{{a.description}}</p><br>
+            <p>가격:{{a.price}}</p><br>
+            <p>분야:{{a.field}}</p><br>
+            ================================================
+        
+        <br><br><br>
+    </div>
+
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% load static %}
+
+
+
+<article class="post featured">
+						<!-- Posts -->
+							<section class="posts">
+								<article>
+								        <p style="font-size: 50px; text-align: center; font-family: 'Noto Sans KR', sans-serif;">신청이 완료되었습니다. <br>유익한 시간 되시길 바랍니다 &#x1F601;</p>
+                                            <br>
+                                        <a href="{% url 'index' %}"><img src="{% static 'images/돈.jpg' %}" alt="" width="100%"></a>
+
+								</article>
+							</section>
+
+						<!-- Footer -->
+							<footer>
+								<div class="pagination">
+
+								</div>
+							</footer>
+
+					</div>
+
+{% endblock %}

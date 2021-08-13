@@ -1,0 +1,69 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<article class="post featured">
+								<header class="major">
+									<span class="date"><h5>각종 취업 정보와 맞춤형 멘토링까지</h5></span>
+									<h2><a href="#">취업에 성공한 선배들을<br />
+									연결해주는 학교별 멘토링 서비스</a></h2>
+									<p><h4>직군별 졸업생 멘토들의 도움을 한 번에!<br />
+									사소한 질문부터 취업에 관한 전문 멘토링 케어까지!<br /></h4>
+									</p>
+								</header>
+								<a href="#" class="image main"><img src="{% static 'images/learn3.jpg' %}" alt="" /></a>
+								<ul class="actions special">
+									<li><a href="{% url 'mentoring' %}" class="button large">멘토 둘러보기</a></li>
+								</ul>
+							</article>
+
+						<!-- Posts -->
+							<section class="posts">
+								<article>
+									<header>
+										<h2>&#127795;서비스 특징<hr></h2>
+									</header>
+									<p><h4/>&#128218;직군별 카테고리 분류 <br>
+									<h4/>&#128218;게시판, 쪽지 등을 통해 멘토, 멘티 간 교류 제공 <br>
+									<h4/>&#128218;취업을 위한 맞춤형 커리큘럼 제공<br><br><br></p>
+								</article>
+								<article>
+									<header>
+										<h2>&#127795;서비스 구성 <br><hr> <h3>01. 온라인 클래스</h3></h2>
+									</header>
+									<p><h4>멘토들이 직접 설계한 커리큘럼에 따라 맞춤형 강의와 멘토링을 제공받을 수 있습니다.</h4>
+									<h5>&#128204;부분 무료: 첫 세 개 강의는 무료로 시청이 가능하고 그 후 추가로 커리큘럼 내의 강의를 모두 듣고 싶다면 유료 결제가 필요합니다.</h5>
+									<h5>&#128204;스토리 텔링: 일반적인 자소서, 면접, 자격증 등의 팁 뿐만 아니라 멘토의 생생한 경험을 토대로 한 스토리텔링 식의 강의를 제공합니다.</h5></p>
+								</article>
+								<article>
+									<header>
+										<h3>02. 마이페이지</h3>
+									</header>
+									<p><h3>본인의 경력사항 혹은 스펙 등을 기입할 수 있고, 1:1 대화와 자소서 첨삭도 받을 수 있습니다.</h3>
+									<h5>&#128204;자소서 첨삭: 현금 결제를 이용해 자소서에 대한 구체적인 첨삭과 평가 받기 가능</h5>
+									<h5>&#128204;공개여부: 공개 여부를 설정함에 따라 개인 정보 보호 가능</h5><br><br><br> </p>
+								</article>
+								<article>
+									<header>
+										<h2>&#127795;기대효과<hr></h2>
+									</header>
+									<p><h3>&#127942;맞춤형 진로 설계</h3>
+									<h5/>온라인 클래스 뿐만 아니라 1:1 멘토링 등을 통해 맞춤형 진로 설계에 대한 도움을 제공받을 수 있습니다.</p>
+									<p><h3>&#127942;취업 관련 정보 제공</h3>
+									<h5/>학과에 상관 없이 본인이 원하는 분야, 혹은 기업의 취업 정보를 알맞게 제공 받을 수 있습니다.</p>
+									<p><h3>&#127942;재학생 & 졸업생 소통 활성화</h3>
+									<h5>각종 게시판 활성화를 통해 재학생, 졸업생 신분과 상관없이 원활하게 소통하며 진로, 취업에 관한 고민을 나눌 수 있습니다.</h5></p>
+								</article>
+							</section>
+
+						<!-- Footer -->
+							<footer>
+								<div class="pagination">
+									<!--<a href="#" class="previous">Prev</a>-->
+
+								</div>
+							</footer>
+
+					</div>
+{% endblock %}

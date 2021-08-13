@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>멘토찾기</title>
+</head>
+<body>
+    {{Lec.lecture_title}}의 강의 상세페이지입니다!
+
+    
+    <br>
+    {% for m in detailLec %}
+        <p>영상 제목 : {{m.video_title}}</p>
+        
+        ==============================
+    {% endfor %}
+</body>
+</html>
